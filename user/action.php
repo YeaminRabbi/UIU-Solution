@@ -68,9 +68,10 @@
 		$course_id = $_POST['course_id'];
 		$type = $_POST['type'];
 		$user_id = $_POST['user_id'];
+		$faculty_id = $_POST['faculty_id'];
 
 
-		$sql = "INSERT INTO ua_grader_application (name,user_id, course_id, course_grade, phone, section, type) VALUES ('$name','$user_id', '$course_id', '$course_grade', '$phone', '$section', '$type')";
+		$sql = "INSERT INTO ua_grader_application (name,user_id, course_id, course_grade, phone, section, type,faculty_id) VALUES ('$name','$user_id', '$course_id', '$course_grade', '$phone', '$section', '$type', '$faculty_id')";
 
 		if ($db->query($sql) === TRUE) {
 		  header('Location: ua_grader_form.php?msg=success');

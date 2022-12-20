@@ -3,6 +3,34 @@
 	require '../db_config.php';
 	require 'custom_function.php';
 	session_start();
+	//approving grader application
+	if(isset($_GET['grader_permit_recommend_id'])){
+		$id = $_GET['grader_permit_recommend_id'];
+		$sql = "UPDATE `ua_grader_application` SET status = 2 WHERE id='$id'";
+
+		$db->query($sql);
+  
+		header("Location: grader_request.php?msg=success");
+	}
+
+	//reject grader application
+	if(isset($_GET['grader_reject_recommend_id'])){
+		$id = $_GET['grader_reject_recommend_id'];
+
+
+		// sql to delete a record
+		$sql = "DELETE FROM ua_grader_application WHERE id='$id'";
+
+		if ($db->query($sql) === TRUE) {
+			header("Location: grader_request.php?msg=removed");
+			die();
+		} else {
+		echo "Error deleting record: " . $conn->error;
+		}
+
+
+		
+	}
 
 	// apporving project proposal
 	if(isset($_GET['proposeID'])){

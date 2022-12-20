@@ -35,7 +35,7 @@
     <div class="d-flex align-items-center justify-content-center bg-sl-primary ht-100v">
 
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white">
-        <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">Official Inventory</div>
+        <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">UIU Solution</div>
         <div class="tx-center mg-b-30">Change your password</div>
 
         <form action="action.php" method="POST">

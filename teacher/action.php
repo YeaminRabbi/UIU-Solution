@@ -22,6 +22,17 @@
 	}
 
 
+	//recommending a grader to department
+	if(isset($_GET['recommend_id'])){
+		$id = $_GET['recommend_id'];
+
+		$sql = "UPDATE ua_grader_application SET status = 1 WHERE id = '$id'";
+		$db->query($sql);
+
+		header("Location: grader_index.php?msg=success");
+	}
+		
+
 
 
 ?>

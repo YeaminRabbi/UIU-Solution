@@ -1,8 +1,5 @@
 <?php 
-    session_start();
-    require 'custom_function.php';
-    $list = fetch_all_data_usingPDO($pdo,'select * from faculty_issues where user_id = '.$_SESSION['user_id'].' ORDER BY id DESC');
-
+    
 ?>
 
 
@@ -65,7 +62,8 @@
                         <tr>
                             <th>SL</th>
                             <th>Name</th>
-                            <th>Status</th>
+                            <th>Email</th>
+                            <th>CPGA</th>
                             <th>Action</th>
 
 
@@ -74,28 +72,43 @@
                     <tbody>
 
                         <?php
+                            require 'custom_function.php';
+                            $id = $_SESSION['user_id'];
+                            
+                            function STUDENT($db, $id){
+                                $sql = "select * from user where id = '".$id."'";
 
-                    foreach ($list as $key => $data) {
-                ?>
+                                $result = mysqli_query($db,$sql);
+                                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                                mysqli_free_result($result);
+                                return $row;
+                            }
+                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where type like 'GRADER' and status = 0 and faculty_id = '$id' ORDER BY id DESC");
+
+                            foreach ($list as $key => $data) {
+
+                              $student = STUDENT($db, $data['user_id']);
+                        ?>
                         <tr>
                             <td><?php echo $key+1; ?></td>
-                            <td><?php echo substr($data['issue'], 0 , 50); ?></td>
-                            <td>
-                                <?php
-                                if($data['status'] == 0)
-                                {
-                                echo 'Pending';
-                                }
-                                else{
-                                    echo 'Replied';
-                                }
-                            ?>
-
+                            <td><?php
+                                  echo  $student['name'];
+                                ?></td>
+                            <td><?php
+                                  echo  $student['email'];
+                                ?>
                             </td>
+                            <td><?php
+                                  echo  $student['cgpa'];
+                                ?></td>
+
+
+
 
                             <td>
 
-                                <a href="issues_show.php?issue_id=<?= $data['id']  ?>" class="btn btn-primary">View</a>
+                                <a href="action.php?recommend_id=<?= $data['id']  ?>"
+                                    class="btn btn-primary">Recommend</a>
 
                             </td>
 
