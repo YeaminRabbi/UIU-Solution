@@ -35,6 +35,20 @@
         </ul>
 
 
+
+
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Job Portal</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="job_portal_form.php" class="nav-link">Post Job</a></li>
+            <li class="nav-item"><a href="job_portal_index.php" class="nav-link">Job list</a></li>
+        </ul>
+
         <a href="grader_request.php" class="sl-menu-link">
             <div class="sl-menu-item">
                 <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
@@ -42,7 +56,12 @@
             </div>
         </a>
 
-
+        <a href="sub.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Subscription Section</span>
+            </div>
+        </a>
 
     </div><!-- sl-sideleft-menu -->
 

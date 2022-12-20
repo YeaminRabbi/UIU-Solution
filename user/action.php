@@ -4,7 +4,18 @@
 	require 'custom_function.php';
 	session_start();
 
+	//subscription request
+	if(isset($_GET['sub_id'])){
+		$id = $_GET['sub_id'];
 
+		
+		$sql = "UPDATE `user` SET subscription = 1  WHERE id='$id'";
+
+		$db->query($sql);
+
+		header("Location: qa_s1.php?msg=success");
+	}
+	
 	//commenting to a post
 	if(isset($_POST['btn_CommenSubmit'])){
 		$user_id = $_POST['user_id'];

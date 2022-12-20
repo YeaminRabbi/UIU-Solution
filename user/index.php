@@ -48,6 +48,71 @@
                 </div>
             </div>
         </div>
+    </div>
+    <?php 
+            $list = fetch_all_data_usingPDO($pdo,"select * from project_proposal where status = 1 order by id desc");
+            
+            ?>
+
+    <div class="sl-pagebody">
+        <!-- MAIN CONTENT -->
+        <div class="card pd-20 pd-sm-40">
+            <div class="d-flex justify-content-between">
+                <h6 class="card-body-title">Project Proposals Details</h6>
+                <a href="project_proposal_form.php" class="btn btn-primary mb-3">Add Proposal</a>
+            </div>
+
+
+
+            <div class="table-wrapper">
+                <table id="myTable" class="table display responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Project Name</th>
+                            <th>Supervisor</th>
+                            <th>Trimester</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
+
+                    foreach ($list as $key => $data) {
+                ?>
+
+                        <tr>
+
+                            <td><?php echo $key+1; ?></td>
+                            <td><?php echo $data['title']; ?></td>
+                            <td><?php echo $data['supervisor']; ?></td>
+                            <td><?php echo $data['trimester']; ?></td>
+
+                            <td>
+                                <a href="project_proposal_view.php?id=<?= $data['id'] ?>"
+                                    class="btn btn-primary">View</a>
+                            </td>
+
+                        </tr>
+
+                        <?php
+                    }
+
+                ?>
+
+
+
+                    </tbody>
+
+                </table>
+
+
+            </div><!-- table-wrapper -->
+        </div>
+
+
     </div><!-- sl-pagebody -->
     <!-- END MAIN CONTENT -->
 
