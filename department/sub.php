@@ -25,13 +25,13 @@
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.php">UIU Solution</a>
-        <span class="breadcrumb-item active">Project Proposals List</span>
+        <span class="breadcrumb-item active">Subscription List</span>
     </nav>
 
     <div class="sl-pagebody">
         <!-- MAIN CONTENT -->
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">Project Proposals Details</h6>
+            <h6 class="card-body-title">Subscription Details</h6>
 
 
 
