@@ -61,6 +61,14 @@
             <li class="nav-item"><a href="community_post_index.php" class="nav-link">All Posts</a></li>
         </ul>
 
+        <a href="job_portal.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Job Portal</span>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        
+
 
     </div><!-- sl-sideleft-menu -->
 
