@@ -4,6 +4,24 @@
 	require 'custom_function.php';
 	session_start();
 
+	//requestiong for requsition
+	if(isset($_POST['btn_requsition_form_submission'])){
+
+		$user_id = $_POST['user_id'];
+		$item = $_POST['item'];
+		$quantity = $_POST['quantity'];
+		$details = $_POST['details'] ?? '';
+
+		$sql = "INSERT INTO requisition_order_list (item,quantity,details, user_id) VALUES ('$item','$quantity', '$details', '$user_id')";
+
+		if ($db->query($sql) === TRUE) {
+		  header('Location: req_form.php?msg=success');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+
+	}
 
 	//creating a complaint/issue to Department
 	if(isset($_POST['btn-facultyIssue'])){

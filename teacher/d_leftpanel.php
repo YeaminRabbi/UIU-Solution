@@ -32,6 +32,18 @@
             <li class="nav-item"><a href="grader_owned.php" class="nav-link">My Graders</a></li>
         </ul>
 
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Requsition</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="req_form.php" class="nav-link">Make Request</a></li>
+            <li class="nav-item"><a href="req_index.php" class="nav-link">Item List</a></li>
+        </ul>
+
 
 
 
