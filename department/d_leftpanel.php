@@ -95,6 +95,13 @@
             </div>
         </a>
 
+        <a href="academic_section.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Academic Section</span>
+            </div>
+        </a>
+
     </div><!-- sl-sideleft-menu -->
 
     <br>

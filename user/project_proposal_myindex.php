@@ -62,7 +62,7 @@
                             <td><?php echo $data['trimester']; ?></td>
 
                             <td>
-                                <a href="project_proposal_view.php?id=<?= $data['id'] ?>"
+                                <a href="project_proposal_myview.php?id=<?= $data['id'] ?>"
                                     class="btn btn-primary">View</a>
                             </td>
 

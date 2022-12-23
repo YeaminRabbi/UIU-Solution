@@ -4,6 +4,60 @@
 	require 'custom_function.php';
 	session_start();
 
+
+
+	//uploading section list
+	if(isset($_POST['btn_sectionUpload'])){
+		//check the file type whether PDF or not
+		$check = 1;
+			foreach ($_FILES['upload']['type'] as $key => $val) {
+				
+				if($val!="application/pdf")
+				{
+					$check = 0;
+					break;
+				}
+			}
+		
+		if($check == 0)
+		{
+		
+			header("Location: academic_section.php?FileError=on");
+			die();
+		}
+
+		//checking files are submitted or not
+		if(isset($_FILES['upload']['name']))
+		{
+			$files = array_filter($_FILES['upload']['name']); //Use something similar before processing files.
+			// Count the number of uploaded files in array
+			$total_count = count($_FILES['upload']['name']);
+			
+			// Loop through every file
+			for( $i=0 ; $i < $total_count ; $i++ ) {
+			   //The temp file path is obtained
+			   $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+			   //A file path needs to be present
+			   if ($tmpFilePath != ""){
+			      //Setup our new file path
+			      $newFilePath = "../academic_section/" .'_'. $_FILES['upload']['name'][$i];
+			      //File is uploaded to temp dir
+			      if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+			     	$sql = "UPDATE `section_list` SET url = '$newFilePath'  WHERE id=1 ";
+					$db->query($sql);
+			      }
+			   }
+			}
+		}
+		else
+		{
+			header("Location: academic_section.php?FileError=on");
+			die();
+		}
+
+		header("Location: academic_section.php?msg=on");	
+	}
+	
 	//course delete
 	if(isset($_GET['course_delete_id'])){
 		$id = $_GET['course_delete_id'];

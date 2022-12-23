@@ -85,7 +85,7 @@
                                 mysqli_free_result($result);
                                 return $row;
                             }
-                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where  status = 1  ORDER BY id DESC");
+                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where  status = 1 or status = 0 ORDER BY id DESC");
 
                             foreach ($list as $key => $data) {
 
@@ -192,7 +192,7 @@
                             $id = $_SESSION['user_id'];
                             
                            
-                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where status = 2  ORDER BY id DESC");
+                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where status = 2   ORDER BY id DESC");
 
                             foreach ($list as $key => $data) {
 
