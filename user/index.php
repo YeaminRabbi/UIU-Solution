@@ -242,6 +242,9 @@
                             <h4>CGPA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                                 <?php echo $user['cgpa'] ?? 'N/A'; ?>
                             </h4>
+                            <a href="cv.php?id=<?= $_SESSION['user_id'] ?>" target="_blank">
+                                <button class="btn btn-primary mt-3 mb-3">Download CV</button>
+                            </a>
                         </div>
                     </div>
                 </div>
