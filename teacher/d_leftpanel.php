@@ -47,12 +47,12 @@
 
 
 
-        <!-- <a href="issues_create.php" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-            <span class="menu-item-label">Complaint/Issues</span>
-          </div>
-        </a> -->
+        <a href="qa.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Question Bank</span>
+            </div>
+        </a>
 
 
         <hr>
