@@ -67,7 +67,12 @@
                 <span class="menu-item-label">UA/Grader Request</span>
             </div>
         </a>
-
+        <a href="course_list.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Course List</span>
+            </div>
+        </a>
         <a href="sub.php" class="sl-menu-link">
             <div class="sl-menu-item">
                 <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>

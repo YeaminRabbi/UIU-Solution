@@ -3,6 +3,29 @@
 	require '../db_config.php';
 	require 'custom_function.php';
 	session_start();
+
+	//course delete
+	if(isset($_GET['course_delete_id'])){
+		$id = $_GET['course_delete_id'];
+
+		$sql = "DELETE FROM course_list WHERE id = '$id'";
+		$db->query($sql);
+		header('Location: course_list.php?mssg=removed');
+	}
+	//adding course 
+	if(isset($_POST['btn_add_course'])){
+		$course = $_POST['name'];
+	
+
+		$sql = "INSERT INTO course_list (name) VALUES ('$course')";
+
+		if ($db->query($sql) === TRUE) {
+		  header('Location: course_list.php?msg=success');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+	}
 	//requsition accept
 	if(isset($_GET['requsition_accrpt_id'])){
 		$id = $_GET['requsition_accrpt_id'];
