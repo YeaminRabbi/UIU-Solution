@@ -64,7 +64,7 @@
         <a href="grader_request.php" class="sl-menu-link">
             <div class="sl-menu-item">
                 <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-                <span class="menu-item-label">Grader Request</span>
+                <span class="menu-item-label">UA/Grader Request</span>
             </div>
         </a>
 
@@ -72,6 +72,21 @@
             <div class="sl-menu-item">
                 <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
                 <span class="menu-item-label">Subscription Section</span>
+            </div>
+        </a>
+
+        <a href="requsition.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Requsition</span>
+            </div>
+        </a>
+
+
+        <a href="notice_board.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+                <span class="menu-item-label">Notice Board</span>
             </div>
         </a>
 

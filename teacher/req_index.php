@@ -1,5 +1,3 @@
-
-
 <?php require 'd_header.php' ?>
 
 <!-- ########## START: LEFT PANEL ########## -->
@@ -22,10 +20,10 @@
     <div class="sl-pagebody">
 
         <div class="card pd-20 pd-sm-40">
-                <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between">
                 <h6 class="card-body-title">Requsition List</h6>
-<a href="req_form.php" class="btn btn-primary mb-4" >Add Requsition</a>
-                </div>
+                <a href="req_form.php" class="btn btn-primary mb-4">Add Requsition</a>
+            </div>
 
 
             <div class="table-wrapper">
@@ -41,10 +39,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php 
+                        <?php 
                         require_once 'custom_function.php';
                         $user_id = $_SESSION['user_id'];
-                        $list = fetch_all_data_usingPDO($pdo, "select * from requisition_order_list where user_id = '".$user_id."'");
+                        $list = fetch_all_data_usingPDO($pdo, "select * from requisition_order_list where user_id = '".$user_id."' order by id desc");
 
                     ?>
 
@@ -68,10 +66,10 @@
                                     }
 
                                 ?>
-                            </td>    
+                            </td>
                             <td><?php echo $data['created_at']; ?></td>
-                                
-                            
+
+
 
                         </tr>
 
@@ -100,12 +98,12 @@
 
 <?php require 'd_javascript.php' ?>
 <script>
-    $('#myTable').DataTable({
+$('#myTable').DataTable({
     bLengthChange: true,
     searching: true,
     responsive: true
-  });
-  </script>
+});
+</script>
 </body>
 
 </html>

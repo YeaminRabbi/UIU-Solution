@@ -3,8 +3,41 @@
 	require '../db_config.php';
 	require 'custom_function.php';
 	session_start();
+	//requsition accept
+	if(isset($_GET['requsition_accrpt_id'])){
+		$id = $_GET['requsition_accrpt_id'];
 
+		$sql = "UPDATE `requisition_order_list` SET status = 1  WHERE id='$id'";
 
+		$db->query($sql);
+
+		header("Location: requsition.php?msg=success");
+	}
+	//notice delete
+	if(isset($_GET['notice_delete_id'])){
+		$id = $_GET['notice_delete_id'];
+
+		$sql = "DELETE FROM notice WHERE id = '$id'";
+		$db->query($sql);
+		header('Location: notice_board.php?mssg=removed');
+	}
+
+	//posting Notice
+	if(isset($_POST['btn_notice_submission']))	{
+		$title = $_POST['title'];
+		$details = $_POST['details'];
+		
+		$sql = "INSERT INTO notice (title,details) VALUES ('$title','$details')";
+
+		if ($db->query($sql) === TRUE) {
+		  header('Location: notice_board.php?msg=success');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+		
+		
+	}
 	//posting Answer to the Questions 
 	if(isset($_POST['btn-qa_answer_submission'])){
 		$id = $_POST['id'];

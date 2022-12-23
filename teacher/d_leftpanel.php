@@ -29,7 +29,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="grader_index.php" class="nav-link">Request</a></li>
-            <li class="nav-item"><a href="grader_owned.php" class="nav-link">My Graders</a></li>
+            <li class="nav-item"><a href="grader_owned.php" class="nav-link">My UA/Graders</a></li>
         </ul>
 
         <a href="#" class="sl-menu-link">

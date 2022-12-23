@@ -25,7 +25,7 @@
     <div class="sl-pagebody">
         <!-- MAIN CONTENT -->
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">Grader Request from Faculty</h6>
+            <h6 class="card-body-title">UA/Grader Request from Faculty</h6>
 
             <?php
 
@@ -85,7 +85,7 @@
                                 mysqli_free_result($result);
                                 return $row;
                             }
-                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where type like 'GRADER' and status = 1  ORDER BY id DESC");
+                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where  status = 1  ORDER BY id DESC");
 
                             foreach ($list as $key => $data) {
 
@@ -140,7 +140,7 @@
         </div>
 
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">Grader List</h6>
+            <h6 class="card-body-title">UA/Grader List</h6>
 
             <?php
 
@@ -192,7 +192,7 @@
                             $id = $_SESSION['user_id'];
                             
                            
-                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where type like 'GRADER' and status = 2  ORDER BY id DESC");
+                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where status = 2  ORDER BY id DESC");
 
                             foreach ($list as $key => $data) {
 

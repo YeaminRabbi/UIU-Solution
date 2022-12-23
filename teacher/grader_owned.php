@@ -56,6 +56,7 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Type</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>CPGA</th>
@@ -77,7 +78,7 @@
                                 mysqli_free_result($result);
                                 return $row;
                             }
-                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where type like 'GRADER' and status = 2 and faculty_id = '$id' ORDER BY id DESC");
+                            $list = fetch_all_data_usingPDO($pdo,"select * from ua_grader_application where status = 2 and faculty_id = '$id' ORDER BY id DESC");
 
                             foreach ($list as $key => $data) {
 
@@ -85,6 +86,9 @@
                         ?>
                         <tr>
                             <td><?php echo $key+1; ?></td>
+                            <td><?php
+                                  echo  $data['type'];
+                                ?></td>
                             <td><?php
                                   echo  $student['name'];
                                 ?></td>
