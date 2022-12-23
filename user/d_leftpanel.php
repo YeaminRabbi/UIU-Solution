@@ -44,7 +44,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
             <li class="nav-item"><a href="project_proposal_form.php" class="nav-link">Apply Form</a></li>
-            <li class="nav-item"><a href="project_proposal_applied.php" class="nav-link">My Projects</a></li>
+            <li class="nav-item"><a href="project_proposal_myindex.php" class="nav-link">My Projects</a></li>
             <li class="nav-item"><a href="project_proposal_index.php" class="nav-link">All Projects</a></li>
         </ul>
 
