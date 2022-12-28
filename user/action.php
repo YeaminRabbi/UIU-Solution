@@ -177,7 +177,8 @@
 
 	}
 
-
+	//upload answer 
+	if(isset($_POST['btn_answer_upload']))
 	
 
 ?>

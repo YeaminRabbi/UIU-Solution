@@ -68,6 +68,7 @@
                             <?php
                                 }
                             ?>
+                            <th>Question</th>
                             <th>Action</th>
 
                         </tr>
@@ -109,7 +110,11 @@
                                 }
                             ?>
                             <td>
-                                <a href="PDF.php?file=<?= $data['question']  ?>" target="_blank" class="btn btn-primary">View Question</a>
+                                <a href="PDF.php?file=<?= $data['question']  ?>" target="_blank" class="btn btn-dark">Download Question</a>
+
+                            </td>   
+                            <td>
+                                <a href="qa_view_answer.php?id=<?= $data['id']  ?>" target="_blank" class="btn btn-primary">View</a>
 
                             </td>
 

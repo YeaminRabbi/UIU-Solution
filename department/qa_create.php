@@ -81,7 +81,14 @@ if(isset($_GET['FileError']))
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-control-label">Mid/Final: </label>
-                    <input type="text"  name="mid_final" class="form-control">
+                    
+                    <select name="mid_final" class="form-control">
+
+                      <option selected disabled>--Select One--</option>
+                      <option value="MID">MID</option>
+                      <option value="FINAL">FINAL</option>
+                    </select>
+                  
                 </div>
               </div>
 
