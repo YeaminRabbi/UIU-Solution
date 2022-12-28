@@ -165,12 +165,10 @@
 		$name = $_POST['name'];
 		$contact = $_POST['contact'];
 		$password = $_POST['password'];
-		$official_id = $_POST['official_id'];
-		$designation = $_POST['designation'];
 
 
 
-		$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password', official_id = '$official_id' , designation='$designation' WHERE id='$user_id'";
+		$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password' WHERE id='$user_id'";
 
 		$db->query($sql);
 

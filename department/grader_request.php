@@ -66,6 +66,7 @@
                             <th>Grader Name</th>
                             <th>Email</th>
                             <th>CPGA</th>
+                            <th>Recommendation</th>
                             <th>Action</th>
 
 
@@ -114,7 +115,22 @@
                                   echo  $student['cgpa'];
                                 ?></td>
 
+                            <td>
+                                
+                            <?php 
 
+                                if($data['status'] == 1)
+                                {
+                                    echo '<b>YES</b>';
+                                }
+                                else {
+                                    echo '<b>NO</b>';
+
+                                }
+
+                            ?>
+
+                            </td>
 
 
                             <td>

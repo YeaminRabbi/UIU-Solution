@@ -10,7 +10,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-external-link" aria-hidden="true"></i>
                 <span class="menu-item-label">Complaint/Issues</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -20,9 +20,23 @@
             <li class="nav-item"><a href="issues_index.php" class="nav-link">List</a></li>
         </ul>
 
+
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span class="menu-item-label">Project Proposals</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div>
+        </a>
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="project_proposal_application.php" class="nav-link">Application</a></li>
+            <li class="nav-item"><a href="project_proposal_list.php" class="nav-link">List</a></li>
+        </ul>
+
+        
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span class="menu-item-label">Grader Application</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -34,7 +48,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-bars" aria-hidden="true"></i>
                 <span class="menu-item-label">Requsition</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -49,7 +63,7 @@
 
         <a href="qa.php" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-university" aria-hidden="true"></i>
                 <span class="menu-item-label">Question Bank</span>
             </div>
         </a>

@@ -246,9 +246,7 @@
                             <h4>User &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                                 <?php echo $user['user_type']; ?>
                             </h4>
-                            <h4>CGPA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
-                                <?php echo $user['cgpa'] ?? 'N/A'; ?>
-                            </h4>
+                          
                         </div>
                     </div>
                 </div>

@@ -24,5 +24,13 @@
 		    return $row;
 		}
 
+		function findUserName($db,$id){
+			$sql = "select * from user where id = '".$id."'";
+	
+			$result = mysqli_query($db,$sql);
+			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			mysqli_free_result($result);
+			return $row['name'];
+		}
 
 ?>

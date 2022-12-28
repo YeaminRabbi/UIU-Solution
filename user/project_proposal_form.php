@@ -3,7 +3,7 @@
     session_start();
     $user_id = $_SESSION['user_id'];
   $course_list = fetch_all_data_usingPDO($pdo, "select * from course_list");
-
+  $faculty_list = fetch_all_data_usingPDO($pdo, "select * from user where user_type like 'TEACHER'")
 ?>
 
 
@@ -84,12 +84,24 @@
                 </div>
               </div>
 
+         
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label class="form-control-label">Supervisor: </label>
-                    <input type="text" name="supervisor" class="form-control">
-                </div>
-              </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Faculty: </label>
+                                <select name="supervisor" class="form-control" required>
+                                    <option selected disabled>--Select Faculty--</option>
+                                    <?php
+                                            foreach($faculty_list as $data)
+                                            {
+                                        ?>
+                                    <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
+                                    <?php 
+                                            }
+                                        ?>
+                                </select>
+                            </div>
+                        </div>
 
               <div class="col-md-6">
                 <div class="form-group">

@@ -23,6 +23,18 @@
 
 	}
 
+		// apporving project proposal
+		if(isset($_GET['proposeID'])){
+			$id = $_GET['proposeID'];
+			$sql = "UPDATE `project_proposal` SET status = 1 WHERE id='$id'";
+	
+			$db->query($sql);
+	  
+			header("Location: project_proposal_application.php?update=on");
+	
+	
+		}
+		
 	//creating a complaint/issue to Department
 	if(isset($_POST['btn-facultyIssue'])){
 		$issue = $_POST['issue'];
@@ -51,6 +63,24 @@
 	}
 		
 
+//User profile Edit or Update
+if(isset($_POST['btn-ProfileUpdate']))
+{
+	$user_id = $_POST['user_id'];
+	$name = $_POST['name'];
+	$contact = $_POST['contact'];
+	$password = $_POST['password'];
+
+
+
+	$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password' WHERE id='$user_id'";
+
+	$db->query($sql);
+
+	header("Location: profile.php?update=on");
+
+
+}
 
 
 ?>

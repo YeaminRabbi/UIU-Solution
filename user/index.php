@@ -243,7 +243,10 @@
                                 <?php echo $user['cgpa'] ?? 'N/A'; ?>
                             </h4>
                             <a href="cv.php?id=<?= $_SESSION['user_id'] ?>" target="_blank">
-                                <button class="btn btn-primary mt-3 mb-3">Download CV</button>
+                                <button class="btn btn-success mt-3 mb-3">Download CV</button>
+                            </a>
+                            <a href="profile.php?id=<?= $_SESSION['user_id'] ?>" target="_blank">
+                                <button class="btn btn-purple mt-3 mb-3">Edit Profile</button>
                             </a>
                         </div>
                     </div>
@@ -263,7 +266,7 @@
         <div class="card pd-20 pd-sm-40">
             <div class="d-flex justify-content-between">
                 <h6 class="card-body-title">Project Proposals Details</h6>
-                <a href="project_proposal_form.php" class="btn btn-primary mb-3">Add Proposal</a>
+                <a href="project_proposal_form.php" class="btn btn-warning mb-3">Add Proposal</a>
             </div>
 
 
@@ -291,7 +294,8 @@
 
                             <td><?php echo $key+1; ?></td>
                             <td><?php echo $data['title']; ?></td>
-                            <td><?php echo $data['supervisor']; ?></td>
+                             <td><?php echo findUserName($db, $data['supervisor']); ?></td>
+
                             <td><?php echo $data['trimester']; ?></td>
 
                             <td>

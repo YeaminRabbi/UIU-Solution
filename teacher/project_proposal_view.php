@@ -1,9 +1,9 @@
 <?php 
   require_once 'custom_function.php';
     session_start();
-    $id = $_GET['id'];
-    $DATA = fetch_all_data_usingDB($db, "select * from ua_grader_application where id = '$id'");
-    $course_list = fetch_all_data_usingPDO($pdo, "select * from course_list");
+    $user_id = $_SESSION['user_id'];
+  $course_list = fetch_all_data_usingPDO($pdo, "select * from course_list");
+  $DATA = fetch_all_data_usingDB($db, "select * from project_proposal where id = '".$_GET['id']."'");
 
 ?>
 
@@ -23,7 +23,7 @@
   <!-- ########## START: MAIN PANEL ########## -->
   <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-      <a class="breadcrumb-item" href="index.php">UIU Solutions</a>
+      <a class="breadcrumb-item" href="index.php">UIU Soluctions</a>
       <span class="breadcrumb-item active">Dashboard</span>
     </nav>
 
@@ -42,41 +42,17 @@
         ?>
 
     <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">UA & Grader Application Form</h6>
-          <p class="mg-b-20 mg-sm-b-30">A form for UA & Grader</p>
-          <!-- <form action="action.php" method="POST" enctype="multipart/form-data"> -->
+          <h6 class="card-body-title">Project Proposal Form</h6>
+          <p class="mg-b-20 mg-sm-b-30">A form for Project Proposal</p>
           <div class="form-layout">
 
-          <!-- <input type="hidden" name="user_id" value="<?= $user_id ?>"> -->
-
+ 
           <div class="row mg-b-25">
 
-          <div class="col-md-6">
+            <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label">Choose Type: </label>
-                    <select name="type" class="form-control" disabled>
-                        <option value="UA" 
-                            <?php 
-                                
-                                if($DATA['type']=="UA"){
-                                    ?>
-                                    selected
-                                    <?php 
-                                }
-                            ?>
-                        
-                        >Apply for UA</option>
-                        <option value="GRADER" 
-                        <?php 
-                                
-                                if($DATA['type']=="GRADER"){
-                                    ?>
-                                    selected
-                                    <?php 
-                                }
-                            ?>
-                        >Apply for GRADER</option>
-                    </select>
+                  <label class="form-control-label">Project Title: </label>
+                    <input type="text" name="title" class="form-control" value="<?= $DATA['title'] ?? '' ?>" disabled>
                 </div>
               </div>
 
@@ -105,43 +81,49 @@
                     </select>
                 </div>
               </div>
-
+              
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label">Name: </label>
-                    <input type="text" name="name" class="form-control" value="<?= $DATA['name'] ?>" disabled >
+                  <label class="form-control-label">Team Members: </label>
+                    <input type="text" name="team" class="form-control" value="<?= $DATA['team'] ?? '' ?>" disabled>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label">Course Grade: </label>
-                    <input type="text" name="course_grade" class="form-control" value="<?= $DATA['course_grade'] ?>" disabled > 
+                  <label class="form-control-label">Supervisor: </label>
+                    <input type="text" name="supervisor" class="form-control" value="<?= $DATA['supervisor'] ?? '' ?>" disabled>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label">Phone: </label>
-                    <input type="text" name="phone" class="form-control" value="<?= $DATA['phone'] ?>" disabled>
+                  <label class="form-control-label">Trimester: </label>
+                    <input type="text"  name="trimester" class="form-control" value="<?= $DATA['trimester'] ?? '' ?>" disabled>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <label class="form-control-label">Section: </label>
-                    <input type="text"  name="section" class="form-control" value="<?= $DATA['section'] ?>" disabled>
+                  <label class="form-control-label">Position: </label>
+                    <input type="text"  name="position" class="form-control" value="<?= $DATA['position'] ?? '' ?>" disabled>
                 </div>
               </div>
 
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label">Details: </label>
+                            <textarea name="details" class="form-control" disabled cols="30" rows="10"><?= $DATA['details'] ?? '' ?> </textarea>
+                </div>
+              </div>
              
               
 
             </div><!-- row -->
 
             <div class="form-layout-footer">
-              <a href="ua_grader_index.php" class="btn btn-dark mg-r-5" >Back</a>
+              <a href="project_proposal_list.php" class="btn btn-dark mg-r-5 ">Back</a>
               
             </div><!-- form-layout-footer -->
           </div><!-- form-layout -->

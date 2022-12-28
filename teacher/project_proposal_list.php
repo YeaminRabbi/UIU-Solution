@@ -7,6 +7,7 @@
     $user_id = $_SESSION['user_id'];
 
     $list = fetch_all_data_usingPDO($pdo,"select * from project_proposal where status = 1 order by id desc");
+    
  
 
 ?>
@@ -57,7 +58,8 @@
                       
                       <td><?php echo $key+1; ?></td>
                       <td><?php echo $data['title']; ?></td>
-                      <td><?php echo findUserName($db, $data['supervisor']); ?></td>
+                      <td><?php echo findUserName($db,$data['supervisor']);  ?></td>
+
                       <td><?php echo $data['trimester']; ?></td>
                       
                       <td>

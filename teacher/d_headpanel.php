@@ -22,6 +22,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-header wd-200">
                     <ul class="list-unstyled user-profile-nav">
+                    <li><a href="profile.php?id=<?= $_SESSION['user_id'] ?>"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;&nbsp; Edit Profile</a></li>
 
                         <li><a href="logout.php"><i class="icon ion-power"></i> Sign Out</a></li>
                     </ul>

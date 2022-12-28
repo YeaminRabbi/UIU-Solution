@@ -11,7 +11,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-commenting" aria-hidden="true"></i>
                 <span class="menu-item-label">Q/A Solutions</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -24,7 +24,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 <span class="menu-item-label">Apply UA/Grader</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -37,7 +37,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-reply-all" aria-hidden="true"></i>
                 <span class="menu-item-label">Project Proposal</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -51,7 +51,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-comments" aria-hidden="true"></i>
                 <span class="menu-item-label">Community Post</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -63,7 +63,7 @@
 
         <a href="job_portal.php" class="sl-menu-link">
             <div class="sl-menu-item">
-                <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <i class="fa fa-handshake-o" aria-hidden="true"></i>
                 <span class="menu-item-label">Job Portal</span>
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
