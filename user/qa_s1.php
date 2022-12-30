@@ -28,25 +28,26 @@
     </nav>
 
     <div class="sl-pagebody">
-            <?php
+        <?php
                  $userID = $_SESSION['user_id'];
                  $USERDATA = fetch_all_data_usingDB($db, "select * from user where id = '".$userID."'");
             ?>
 
         <div class="card pd-20 pd-sm-40">
             <div class="d-flex justify-content-between">
-            <h6 class="card-body-title">Q/A Section</h6>
-            <?php 
+                <h6 class="card-body-title">Q/A Section</h6>
+                <?php 
                 if($USERDATA['subscription'] == 0){
             ?>
-            <div>
-            <span style="color:red; font-weight:bold;">Want to see the answers Scripts?</span>
-            <a href="sub.php?user_id=<?= $USERDATA['id'] ?>" class="mb-3" style="font-size:22px;font-weight:bold;">Click here</a>
-            </div>  
-            <?php 
+                <div>
+                    <span style="color:red; font-weight:bold;">Want to see the answers Scripts?</span>
+                    <a href="sub.php?user_id=<?= $USERDATA['id'] ?>" class="mb-3"
+                        style="font-size:22px;font-weight:bold;">Click here</a>
+                </div>
+                <?php 
     
                 }
-            ?>  
+            ?>
             </div>
 
 
@@ -59,7 +60,7 @@
                             <th>Course</th>
                             <th>Trimester</th>
                             <th>Mid/Final</th>
-                            <?php 
+                            <!-- <?php 
                                 if($USERDATA['subscription'] == 2){
                             ?>
                                 
@@ -67,7 +68,7 @@
 
                             <?php
                                 }
-                            ?>
+                            ?> -->
                             <th>Question</th>
                             <th>Action</th>
 
@@ -88,18 +89,19 @@
                             <td><?php echo $data['course_name']; ?></td>
                             <td><?php echo $data['trimester']; ?></td>
                             <td><?php echo $data['mid_final']; ?></td>
-                            <?php 
+                            <!-- <?php 
                                 if($USERDATA['subscription'] == 2){
                             ?>
-                                
+
                             <td>
-                                
-                                    <?php
+
+                                <?php
                                             if(!empty($data['answer'])){
                                     ?>
-                                        <a href="PDF.php?file=<?= $data['answer']  ?>" target="_blank" class="btn btn-success">View Answer</a>
+                                <a href="PDF.php?file=<?= $data['answer']  ?>" target="_blank"
+                                    class="btn btn-success">View Answer</a>
 
-                                    <?php
+                                <?php
                                             }else {
                                                 echo 'No Answer Script';
                                             }
@@ -108,13 +110,15 @@
 
                             <?php
                                 }
-                            ?>
+                            ?> -->
                             <td>
-                                <a href="PDF.php?file=<?= $data['question']  ?>" target="_blank" class="btn btn-dark">Download Question</a>
+                                <a href="PDF.php?file=<?= $data['question']  ?>" target="_blank"
+                                    class="btn btn-dark">Download Question</a>
 
-                            </td>   
+                            </td>
                             <td>
-                                <a href="qa_view_answer.php?id=<?= $data['id']  ?>" target="_blank" class="btn btn-primary">View</a>
+                                <a href="qa_view_answer.php?id=<?= $data['id']  ?>" target="_blank"
+                                    class="btn btn-primary">View</a>
 
                             </td>
 
@@ -146,12 +150,12 @@
 <?php require 'd_javascript.php' ?>
 
 <script>
-    $('#myTable').DataTable({
+$('#myTable').DataTable({
     bLengthChange: true,
     searching: true,
     responsive: true
-  });
-  </script>
+});
+</script>
 </body>
 
 </html>

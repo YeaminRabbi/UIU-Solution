@@ -79,6 +79,7 @@ $pdf->SetFont('Times','',14);
             $course = fetch_all_data_usingDB($db, "SELECT * FROM course_list WHERE id = '$id'");
             return $course['name'];
         }
+       
 
         foreach($myprojects as $key => $project){
             
@@ -88,7 +89,7 @@ $pdf->SetFont('Times','',14);
 
             $pdf->Cell(0, 6, 'Project Title: '. $project['title'], 0, 1);
             $pdf->Cell(0, 6, 'Course: '. findCourse($db,$project['course_id']), 0, 1);
-            $pdf->Cell(0, 6, 'Supervisor: '. $project['supervisor'], 0, 1);
+            $pdf->Cell(0, 6, 'Supervisor: '. findUserName($db,$project['supervisor']), 0, 1);
             $pdf->Cell(0, 6, 'Team Mates: '. $project['team'], 0, 1);
             $pdf->Cell(0, 6, 'Project Status: '. $project['position'], 0, 1);
             $pdf->Cell(0, 6, 'Project Trimester: '. $project['trimester'], 0, 1);

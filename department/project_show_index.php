@@ -6,7 +6,7 @@
   
     $user_id = $_SESSION['user_id'];
 
-    $list = fetch_all_data_usingPDO($pdo,"select * from project_proposal where status = 1 order by id desc");
+    $list = fetch_all_data_usingPDO($pdo,"select * from project_show order by id desc");
  
 
 ?>
@@ -25,13 +25,13 @@
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.php">UIU Solution</a>
-        <span class="breadcrumb-item active">Project Proposals List</span>
+        <span class="breadcrumb-item active">Project Show Form List</span>
     </nav>
 
     <div class="sl-pagebody">
         <!-- MAIN CONTENT -->
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">Project Proposals Details</h6>
+            <h6 class="card-body-title">Project Show Form Details</h6>
 
 
 
@@ -41,8 +41,8 @@
                         <tr>
                             <th>SL</th>
                             <th>Project Name</th>
-                            <th>Supervisor</th>
-                            <th>Trimester</th>
+                            <th>Course</th>
+                            <th>Section</th>
                             <th>Action</th>
 
                         </tr>
@@ -58,12 +58,11 @@
 
                             <td><?php echo $key+1; ?></td>
                             <td><?php echo $data['title']; ?></td>
-                            <td><?php echo findUserName($db, $data['supervisor']); ?></td>
-                            <td><?php echo $data['trimester']; ?></td>
+                            <td><?php echo $data['course_name']; ?></td>
+                            <td><?php echo $data['section']; ?></td>
 
                             <td>
-                                <a href="project_proposal_view.php?id=<?= $data['id'] ?>"
-                                    class="btn btn-primary">View</a>
+                                <a href="project_show_view.php?id=<?= $data['id'] ?>" class="btn btn-primary">View</a>
                             </td>
 
                         </tr>

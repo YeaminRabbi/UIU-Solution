@@ -7,11 +7,16 @@
     <label class="sidebar-label">Categories</label>
     <div class="sl-sideleft-menu">
 
-
+        <a href="index.php" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span class="menu-item-label">Dashboard</span>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-            <i class="fa fa-commenting" aria-hidden="true"></i>
+                <i class="fa fa-commenting" aria-hidden="true"></i>
                 <span class="menu-item-label">Q/A Solutions</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -24,7 +29,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-            <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 <span class="menu-item-label">Apply UA/Grader</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -37,7 +42,7 @@
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-            <i class="fa fa-reply-all" aria-hidden="true"></i>
+                <i class="fa fa-reply-all" aria-hidden="true"></i>
                 <span class="menu-item-label">Project Proposal</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -48,10 +53,21 @@
             <li class="nav-item"><a href="project_proposal_index.php" class="nav-link">All Projects</a></li>
         </ul>
 
+        <a href="#" class="sl-menu-link">
+            <div class="sl-menu-item">
+                <i class="fa fa-reply-all" aria-hidden="true"></i>
+                <span class="menu-item-label">Project Show</span>
+                <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="project_show_form.php" class="nav-link">Apply Form</a></li>
+        </ul>
+
 
         <a href="#" class="sl-menu-link">
             <div class="sl-menu-item">
-            <i class="fa fa-comments" aria-hidden="true"></i>
+                <i class="fa fa-comments" aria-hidden="true"></i>
                 <span class="menu-item-label">Community Post</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div><!-- menu-item -->
@@ -61,9 +77,11 @@
             <li class="nav-item"><a href="community_post_index.php" class="nav-link">All Posts</a></li>
         </ul>
 
+
+
         <a href="job_portal.php" class="sl-menu-link">
             <div class="sl-menu-item">
-            <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                <i class="fa fa-handshake-o" aria-hidden="true"></i>
                 <span class="menu-item-label">Job Portal</span>
             </div><!-- menu-item -->
         </a><!-- sl-menu-link -->

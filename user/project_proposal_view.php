@@ -86,7 +86,7 @@
                         <div class="form-group">
                             <label class="form-control-label">Supervisor: </label>
                             <input type="text" name="supervisor" class="form-control"
-                                value="<?= $DATA['supervisor'] ?? '' ?>" disabled>
+                                value="<?= findUserName($db,$DATA['supervisor'])  ?>" disabled>
                         </div>
                     </div>
 
@@ -103,14 +103,6 @@
                             <label class="form-control-label">Position: </label>
                             <input type="text" name="position" class="form-control"
                                 value="<?= $DATA['position'] ?? '' ?>" disabled>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="form-control-label">Details: </label>
-                            <textarea name="details" class="form-control" disabled cols="30"
-                                rows="10"><?= $DATA['details'] ?? '' ?> </textarea>
                         </div>
                     </div>
 

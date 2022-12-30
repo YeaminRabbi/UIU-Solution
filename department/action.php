@@ -58,6 +58,20 @@
 		header("Location: academic_section.php?msg=on");	
 	}
 	
+
+	//approving the requsition for answer 
+	if(isset($_GET['answerIdApprove']))
+	{
+		$id = $_GET['answerIdApprove'];
+
+		$sql = "UPDATE `answers` SET status = 1  WHERE id='$id'";
+
+		$db->query($sql);
+
+		header("Location: qa_answer_index.php?msg=success");
+	}
+
+	
 	//course delete
 	if(isset($_GET['course_delete_id'])){
 		$id = $_GET['course_delete_id'];
@@ -232,7 +246,25 @@
 		header("Location: qa_create.php?msg=on");		
 	}
 	
+	if(isset($_GET['openGrader'])){
+		
+		$sql = "UPDATE `grader_section` SET status = 1  WHERE id=1";
 
+		$db->query($sql);
+
+		header("Location: index.php?msg=on");
+	}
+
+	if(isset($_GET['closeGrader'])){
+		
+		$sql = "UPDATE `grader_section` SET status = 0  WHERE id=1";
+
+		$db->query($sql);
+
+		header("Location: index.php?msg=on");
+	}
+
+	
 	//approve subscription request
 	if(isset($_GET['sub_id'])){
 		$id = $_GET['sub_id'];

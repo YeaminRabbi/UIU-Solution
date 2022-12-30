@@ -1,15 +1,18 @@
-<?php require 'd_header.php' ?>
-
 <?php 
-  
-    require 'custom_function.php';
-  
-    $user_id = $_SESSION['user_id'];
+    require_once 'custom_function.php';
+    $list = fetch_all_data_usingPDO($pdo, 'select * from answers where status = 0');
 
-    $list = fetch_all_data_usingPDO($pdo,"select * from project_proposal where status = 1 order by id desc");
- 
-
+    function getQuestion($db, $id){
+        $sql = "select * from question_answer_solutions where id = '$id'" ; 
+        $result = mysqli_query($db,$sql);
+		    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+		    mysqli_free_result($result);
+		    return $row['question'];
+    }
 ?>
+
+
+<?php require 'd_header.php' ?>
 
 <!-- ########## START: LEFT PANEL ########## -->
 <?php require 'd_leftpanel.php' ?>
@@ -24,14 +27,14 @@
 <!-- ########## START: MAIN PANEL ########## -->
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="index.php">UIU Solution</a>
-        <span class="breadcrumb-item active">Project Proposals List</span>
+        <a class="breadcrumb-item" href="index.php">UIU Soluctions</a>
+        <span class="breadcrumb-item active">Dashboard</span>
     </nav>
 
     <div class="sl-pagebody">
-        <!-- MAIN CONTENT -->
+
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">Project Proposals Details</h6>
+            <h6 class="card-body-title">Q/A Section</h6>
 
 
 
@@ -40,9 +43,8 @@
                     <thead>
                         <tr>
                             <th>SL</th>
-                            <th>Project Name</th>
-                            <th>Supervisor</th>
-                            <th>Trimester</th>
+                            <th>Question</th>
+                            <th>Answer</th>
                             <th>Action</th>
 
                         </tr>
@@ -53,17 +55,25 @@
 
                     foreach ($list as $key => $data) {
                 ?>
+                        getQuestion
 
                         <tr>
 
                             <td><?php echo $key+1; ?></td>
-                            <td><?php echo $data['title']; ?></td>
-                            <td><?php echo findUserName($db, $data['supervisor']); ?></td>
-                            <td><?php echo $data['trimester']; ?></td>
+                            <td>
+
+
+                                <a href="PDF.php?file=<?php echo getQuestion($db, $data['question_id']); ?>"
+                                    target="_blank" class="btn btn-purple">View
+                                    Question</a>
+
+                            </td>
+                            <td><a href="PDF.php?file=<?= $data['url']  ?>" target="_blank" class="btn btn-success">View
+                                    Answer</a></td>
 
                             <td>
-                                <a href="project_proposal_view.php?id=<?= $data['id'] ?>"
-                                    class="btn btn-primary">View</a>
+                                <a href="action.php?answerIdApprove=<?= $data['id']  ?>"
+                                    class="btn btn-primary">Approve</a>
                             </td>
 
                         </tr>
@@ -83,7 +93,6 @@
             </div><!-- table-wrapper -->
         </div>
 
-
     </div><!-- sl-pagebody -->
     <!-- END MAIN CONTENT -->
 
@@ -93,8 +102,6 @@
 <!-- ########## END: MAIN PANEL ########## -->
 
 <?php require 'd_javascript.php' ?>
-
-
 <script>
 $('#myTable').DataTable({
     bLengthChange: true,

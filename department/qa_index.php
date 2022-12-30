@@ -39,7 +39,6 @@
                             <th>Course</th>
                             <th>Trimester</th>
                             <th>Mid/Final</th>
-                            <th>Answer</th>
                             <th>Action</th>
 
                         </tr>
@@ -58,28 +57,11 @@
                             <td><?php echo $data['course_name']; ?></td>
                             <td><?php echo $data['trimester']; ?></td>
                             <td><?php echo $data['mid_final']; ?></td>
-                            <td>
-                                <?php 
-                                    if(empty($data['answer']))
-                                    {
-                                        echo 'No Answer Script';
-                                ?>
-                                 <br><a href="qa_answer_create.php?id=<?= $data['id'] ?>">Upload Answer</a>                       
-                                <?php
-                                
-                                    }else{
-                                ?>
-                                <a href="PDF.php?file=<?= $data['answer']  ?>" target="_blank" class="btn btn-success">View</a>
 
-
-                                <?php
-                                    }
-                            
-                                ?>
-                            </td>
 
                             <td>
-                                <a href="PDF.php?file=<?= $data['question']  ?>" target="_blank" class="btn btn-primary">View</a>
+                                <a href="PDF.php?file=<?= $data['question']  ?>" target="_blank"
+                                    class="btn btn-primary">View</a>
                             </td>
 
                         </tr>
@@ -109,12 +91,12 @@
 
 <?php require 'd_javascript.php' ?>
 <script>
-    $('#myTable').DataTable({
+$('#myTable').DataTable({
     bLengthChange: true,
     searching: true,
     responsive: true
-  });
-  </script>
+});
+</script>
 </body>
 
 </html>

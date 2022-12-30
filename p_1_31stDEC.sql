@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2022 at 02:47 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Dec 30, 2022 at 08:09 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
@@ -51,12 +51,21 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `created_at`) VALUES
 
 CREATE TABLE `answers` (
   `id` int(11) NOT NULL,
-  `url` varchar(255) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `question_id` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `url`, `question_id`, `status`, `user_id`, `created_at`) VALUES
+(2, '../qa/Expert-QA.pdf', 11, 1, 7, '2022-12-30 16:49:48'),
+(3, '../qa/CamScanner 11-22-2022 14.27.pdf', 12, 1, 7, '2022-12-30 16:50:49'),
+(4, '../qa/CamScanner 11-22-2022 14.27.pdf', 12, 1, 7, '2022-12-30 16:51:14');
 
 -- --------------------------------------------------------
 
@@ -70,7 +79,7 @@ CREATE TABLE `comment` (
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `post_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `comment`
@@ -91,7 +100,7 @@ CREATE TABLE `course_list` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `course_list`
@@ -118,7 +127,7 @@ CREATE TABLE `division` (
   `id` int(11) NOT NULL,
   `division_name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `division`
@@ -143,7 +152,7 @@ CREATE TABLE `faculty_issues` (
   `reply` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `faculty_issues`
@@ -154,6 +163,24 @@ INSERT INTO `faculty_issues` (`id`, `issue`, `reply`, `status`, `user_id`) VALUE
 (2, 'asdgasdfgadsfbv\r\n', 'We are lokking for this soluction', 1, 6),
 (3, 'asdgasfdhasedtgwerfb', NULL, 0, 5),
 (4, ';ikjhbvlikjhv', NULL, 0, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grader_section`
+--
+
+CREATE TABLE `grader_section` (
+  `id` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grader_section`
+--
+
+INSERT INTO `grader_section` (`id`, `status`) VALUES
+(1, 0);
 
 -- --------------------------------------------------------
 
@@ -170,7 +197,7 @@ CREATE TABLE `job_portal` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `company` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `job_portal`
@@ -191,7 +218,7 @@ CREATE TABLE `notice` (
   `title` varchar(255) NOT NULL,
   `details` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notice`
@@ -219,7 +246,7 @@ CREATE TABLE `post` (
   `details` text NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post`
@@ -247,16 +274,47 @@ CREATE TABLE `project_proposal` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `trimester` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `project_proposal`
 --
 
 INSERT INTO `project_proposal` (`id`, `title`, `user_id`, `team`, `supervisor`, `position`, `course_id`, `details`, `created_at`, `trimester`, `status`) VALUES
-(1, 'Mini Drone', 7, 'x,y,z,d,df', '5', '2nd Runner up', 4, 'This a mini drone project', '2022-12-16 03:04:49', 'Spring 22', 1),
-(2, 'Mini Drone 2', 1, 'J , T, E, S', '5', 'Winner', 4, 'This project is based on IOT.', '2022-12-16 03:04:49', 'Spring 23', 1),
-(3, 'asdfhadsf', 7, 'asdfgaf', '3', 'asfdgh', 3, 'asdfasdfb', '2022-12-28 11:00:27', 'asdfgasdf', 0);
+(3, 'sadfdsaf', 7, 'asdf', '3', 'asdf', 3, 'asdfasdf', '2022-12-30 17:16:16', 'asdf', 1),
+(4, 'sadfdsaf', 1, 'asdf', '3', 'asdf', 3, 'asdfasdf', '2022-12-30 17:16:16', 'asdf', 1),
+(5, 'asdfsdf', 7, 'asdf', '3', 'asdf', 4, 'asdfasdf', '2022-12-30 18:37:45', 'asdfasdf', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project_show`
+--
+
+CREATE TABLE `project_show` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `course_name` varchar(255) NOT NULL,
+  `section` varchar(255) NOT NULL,
+  `t1_name` varchar(255) DEFAULT NULL,
+  `t1_email` varchar(255) DEFAULT NULL,
+  `t2_name` varchar(255) DEFAULT NULL,
+  `t2_email` varchar(255) DEFAULT NULL,
+  `t3_name` varchar(255) DEFAULT NULL,
+  `t3_email` varchar(255) DEFAULT NULL,
+  `t4_name` varchar(255) DEFAULT NULL,
+  `t4_email` varchar(255) DEFAULT NULL,
+  `t5_email` varchar(255) DEFAULT NULL,
+  `t5_name` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `project_show`
+--
+
+INSERT INTO `project_show` (`id`, `title`, `course_name`, `section`, `t1_name`, `t1_email`, `t2_name`, `t2_email`, `t3_name`, `t3_email`, `t4_name`, `t4_email`, `t5_email`, `t5_name`, `status`) VALUES
+(1, 'Mini Drone', 'Electronics', 'A', 'T1', 't1@gmail.com', 't2', 't2@gmail.com', 't3', 't3@gmail.com', 't4', 't4@gmail.com', 't5@gmail.com', 't5', 0);
 
 -- --------------------------------------------------------
 
@@ -276,15 +334,15 @@ CREATE TABLE `question_answer_solutions` (
   `course_name` varchar(255) NOT NULL,
   `trimester` varchar(255) NOT NULL,
   `mid_final` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `question_answer_solutions`
 --
 
 INSERT INTO `question_answer_solutions` (`id`, `title`, `question`, `answer`, `reply`, `user_id`, `reply_id`, `created_at`, `course_name`, `trimester`, `mid_final`) VALUES
-(11, 'DLD Question', '../qa/__dryrun.pdf', NULL, NULL, 6, NULL, '2022-12-28 12:29:55', 'CODE 212 DIGITAL LOGIC DESIGN', 'Spring 22', 'mid'),
-(12, 'Discrete MAth', '../qa/__math.pdf', NULL, NULL, 6, NULL, '2022-12-28 12:33:22', 'CODE 115', 'Summer 11', 'final');
+(11, 'TI!', '../qa/__Expert-QA.pdf', NULL, NULL, 6, NULL, '2022-12-30 16:29:36', 'CDA', 'FDASD', 'mid'),
+(12, 'TRRR', '../qa/__uA-selctn-Dec-9-2022.pdf', NULL, NULL, 6, NULL, '2022-12-30 16:30:29', 'dfsgsd', 'adsfgbadf', 'final');
 
 -- --------------------------------------------------------
 
@@ -300,7 +358,7 @@ CREATE TABLE `requisition_order_list` (
   `details` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `requisition_order_list`
@@ -322,7 +380,7 @@ CREATE TABLE `schools` (
   `id` int(11) NOT NULL,
   `school_name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `schools`
@@ -347,7 +405,7 @@ INSERT INTO `schools` (`id`, `school_name`, `created_at`) VALUES
 CREATE TABLE `section_list` (
   `id` int(11) NOT NULL,
   `url` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `section_list`
@@ -374,7 +432,7 @@ CREATE TABLE `ua_grader_application` (
   `section` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ua_grader_application`
@@ -397,29 +455,30 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `user_type` varchar(255) NOT NULL,
   `school_division` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
-  `cgpa` varchar(255) NOT NULL DEFAULT '3.19',
+  `cgpa` varchar(255) DEFAULT NULL,
   `official_id` int(11) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `subscription` int(11) NOT NULL DEFAULT 0,
   `created_id` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `contact`, `password`, `user_type`, `school_division`, `status`, `cgpa`, `official_id`, `designation`, `subscription`, `created_id`) VALUES
-(1, 'Helly', 'hlas@gmail.com', '0164465165', '123', 'STUDENT', '1', 1, '3.19', 111745, 'Professor', 2, '2021-07-17 09:39:41'),
-(2, 'Rabbi', 'rabbi@gmail.com', '01736145515', '123', 'TEACHER', '1', 1, 'N/A', 1425, 'Manager XX', 0, '2021-07-17 09:40:13'),
-(3, 'Yousuf', 'yousuf@gmail.com', '0135645665', '123', 'TEACHER', '1', 1, 'N/A', 12356478, 'CEO', 0, '2021-07-18 07:38:41'),
-(4, 'Bejji', 'bejji@gmail.com', '123', '123', 'OFFICIAL', '4', 1, 'N/A', 111202289, 'Web Developer', 0, '2021-07-21 20:10:48'),
-(5, 'JellyFish', 'jellyfish@gmail.com', '01744112518', '123', 'TEACHER', '1', 1, 'N/A', 12455781, 'Faculty', 0, '2022-12-11 09:13:40'),
-(6, 'Department 1', 'jellyfish2@gmail.com', '121212', '123', 'OFFICIAL', '1', 1, 'N/A', 12413, 'asdf', 0, '2022-12-11 09:26:06'),
-(7, 'S!', 's1@gmail.com', '01768002727', '123', 'STUDENT', '8', 1, '3.19', 14253135, 'student', 2, '2022-12-11 09:38:10');
+INSERT INTO `user` (`id`, `name`, `email`, `contact`, `image`, `password`, `user_type`, `school_division`, `status`, `cgpa`, `official_id`, `designation`, `subscription`, `created_id`) VALUES
+(1, 'Helly', 'hlas@gmail.com', '0164465165', NULL, '123', 'STUDENT', '1', 1, '3.19', 111745, 'Professor', 2, '2021-07-17 09:39:41'),
+(2, 'Rabbi', 'rabbi@gmail.com', '01736145515', NULL, '123', 'TEACHER', '1', 1, 'N/A', 1425, 'Manager XX', 0, '2021-07-17 09:40:13'),
+(3, 'Yousuf', 'yousuf@gmail.com', '0135645665', NULL, '123', 'TEACHER', '1', 1, 'N/A', 12356478, 'CEO', 0, '2021-07-18 07:38:41'),
+(4, 'Bejji', 'bejji@gmail.com', '123', NULL, '123', 'OFFICIAL', '4', 1, 'N/A', 111202289, 'Web Developer', 0, '2021-07-21 20:10:48'),
+(5, 'JellyFish', 'jellyfish@gmail.com', '01832165416', NULL, '123', 'TEACHER', '1', 1, 'N/A', 12455781, 'Faculty', 0, '2022-12-11 09:13:40'),
+(6, 'jelluy2', 'jellyfish2@gmail.com', '121212', NULL, '123', 'OFFICIAL', '1', 1, 'N/A', 12413, 'asdf', 0, '2022-12-11 09:26:06'),
+(7, 'Student 1', 's1@gmail.com', '0147744212', '../images/User_images.png', '123', 'STUDENT', '8', 1, '3.80', 14253135, 'student', 2, '2022-12-11 09:38:10');
 
 --
 -- Indexes for dumped tables
@@ -462,6 +521,12 @@ ALTER TABLE `faculty_issues`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `grader_section`
+--
+ALTER TABLE `grader_section`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `job_portal`
 --
 ALTER TABLE `job_portal`
@@ -483,6 +548,12 @@ ALTER TABLE `post`
 -- Indexes for table `project_proposal`
 --
 ALTER TABLE `project_proposal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project_show`
+--
+ALTER TABLE `project_show`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -535,7 +606,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -562,6 +633,12 @@ ALTER TABLE `faculty_issues`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `grader_section`
+--
+ALTER TABLE `grader_section`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `job_portal`
 --
 ALTER TABLE `job_portal`
@@ -583,7 +660,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `project_proposal`
 --
 ALTER TABLE `project_proposal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `project_show`
+--
+ALTER TABLE `project_show`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `question_answer_solutions`
@@ -613,7 +696,7 @@ ALTER TABLE `section_list`
 -- AUTO_INCREMENT for table `ua_grader_application`
 --
 ALTER TABLE `ua_grader_application`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`

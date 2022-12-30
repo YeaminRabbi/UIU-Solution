@@ -28,6 +28,8 @@
             $faculty_list = fetch_all_data_usingPDO($pdo, "select * from user where user_type like 'TEACHER'");
             $section = fetch_all_data_usingDB($db, "select * from section_list where id = 1");
             $username = $_SESSION['user_name'];
+            $user = fetch_all_data_usingDB($db, "select * from user where id = '$user_id'");
+            $grader_section = fetch_all_data_usingDB($db, "select * from grader_section where id = 1" );
         ?>
         <?php
 
@@ -37,6 +39,21 @@
         <div class="alert alert-success alert-dismissible" style="height: 50px;">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             Successfully Applied!
+        </div>
+        <?php 
+        }
+
+                
+        ?>
+
+        <?php
+
+        if(isset($_GET['exist']))
+        {
+        ?>
+        <div class="alert alert-danger alert-dismissible" style="height: 50px;">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Already Applied!
         </div>
         <?php 
         }
@@ -76,9 +93,26 @@
                             <div class="form-group">
                                 <label class="form-control-label">Choose Type: </label>
                                 <select name="type" class="form-control" required>
-                                    <option selected disabled>--Select one--</option>
+                                    <option disabled>--Select one--</option>
+
+                                    <?php 
+
+                                    if((float)$user['cgpa'] >= 3.75){
+                                    ?>
                                     <option value="UA">Apply for UA</option>
+
+                                    <?php 
+                                    }
+                    
+                                    if($grader_section['status'] == 1 ){
+                                    ?>
                                     <option value="GRADER">Apply for GRADER</option>
+
+
+                                    <?php 
+                                    }
+                    
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -87,15 +121,15 @@
                             <div class="form-group">
                                 <label class="form-control-label">Course: </label>
                                 <select name="course_id" class="form-control" required>
-                                    <option selected disabled>--Select Course--</option>
+                                    <option disabled>--Select Course--</option>
                                     <?php
-                            foreach($course_list as $data)
-                            {
-                        ?>
+                                        foreach($course_list as $data)
+                                        {
+                                    ?>
                                     <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
                                     <?php 
-                            }
-                        ?>
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -104,7 +138,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">Faculty: </label>
                                 <select name="faculty_id" class="form-control" required>
-                                    <option selected disabled>--Select Faculty--</option>
+                                    <option disabled>--Select Faculty--</option>
                                     <?php
                                             foreach($faculty_list as $data)
                                             {

@@ -64,7 +64,7 @@
 
                     <div class="row mg-b-25">
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Project Title: </label>
                                 <input type="text" name="title" class="form-control" required>
@@ -73,17 +73,14 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label">Course: </label>
-                                <select name="course_id" class="form-control" required>
-                                    <option disabled>--Select Course--</option>
-                                    <?php
-                            foreach($course_list as $data)
-                            {
-                        ?>
-                                    <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
-                                    <?php 
-                            }
-                        ?>
+                                <label class="form-csontrol-label">Course: </label>
+                                <select name="course_name" class="form-control" required>
+                                    <option value="SAD_LAB">SAD LAB</option>
+                                    <option value="Microprocessor_LAB">Microprocessor LAB</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="DBMS_LAB">DBMS LAB</option>
+
+
                                 </select>
                             </div>
                         </div>
@@ -93,8 +90,25 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label">Team Members: </label>
-                                <input type="text" name="team" class="form-control" required>
+                                <label class="form-control-label">Section: </label>
+                                <input type="text" name="section" class="form-control" required>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Name of Team Member 1: </label>
+                                <input type="text" name="t1_name" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Email Team Member 1: </label>
+                                <input type="text" name="t1_email" class="form-control" required>
                             </div>
                         </div>
 
@@ -102,41 +116,63 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label">Faculty: </label>
-                                <select name="supervisor" class="form-control" required>
-                                    <option disabled>--Select Faculty--</option>
-                                    <?php
-                                            foreach($faculty_list as $data)
-                                            {
-                                        ?>
-                                    <option value="<?= $data['id'] ?>"><?= $data['name'] ?></option>
-                                    <?php 
-                                            }
-                                        ?>
-                                </select>
+                                <label class="form-control-label">Name of Team Member 2: </label>
+                                <input type="text" name="t2_name" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label">Trimester: </label>
-                                <input type="text" name="trimester" class="form-control" required>
+                                <label class="form-control-label">Email Team Member 2: </label>
+                                <input type="text" name="t2_email" class="form-control" required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Name of Team Member 3: </label>
+                                <input type="text" name="t3_name" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label">Position: </label>
-                                <input type="text" name="position" class="form-control" required>
+                                <label class="form-control-label">Email Team Member 3: </label>
+                                <input type="text" name="t3_email" class="form-control" required>
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label">Details: </label>
-                                <textarea name="details" class="form-control" cols="30" rows="10" required></textarea>
+                                <label class="form-control-label">Name of Team Member 4: </label>
+                                <input type="text" name="t4_name" class="form-control" required>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Email Team Member 4: </label>
+                                <input type="text" name="t4_email" class="form-control" required>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Name of Team Member 5: </label>
+                                <input type="text" name="t5_name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-control-label">Email Team Member 5: </label>
+                                <input type="text" name="t5_email" class="form-control">
+                            </div>
+                        </div>
+
 
 
 
@@ -144,7 +180,7 @@
 
                     <div class="form-layout-footer">
                         <button type="submit" class="btn btn-primary mg-r-5"
-                            name="btn_ProjectProposalFormSubmit">Submit</button>
+                            name="btn_ProjectShowCaseFormSubmit">Submit</button>
 
                     </div><!-- form-layout-footer -->
                 </div><!-- form-layout -->

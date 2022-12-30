@@ -61,12 +61,15 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Type</th>
                             <th>Faculty</th>
                             <th>Faculty Email</th>
                             <th>Grader Name</th>
                             <th>Email</th>
                             <th>CPGA</th>
                             <th>Recommendation</th>
+                            <th>Course</th>
+                            <th>Section</th>
                             <th>Action</th>
 
 
@@ -94,6 +97,7 @@
                         ?>
                         <tr>
                             <td><?php echo $key+1; ?></td>
+                            <td><?php echo $data['type'] ?></td>
                             <td><?php
                                     $faculty = STUDENT($db, $data['faculty_id']);  
                                     echo $faculty['name'];
@@ -116,8 +120,8 @@
                                 ?></td>
 
                             <td>
-                                
-                            <?php 
+
+                                <?php 
 
                                 if($data['status'] == 1)
                                 {
@@ -132,6 +136,12 @@
 
                             </td>
 
+                            <td>
+                                <?php echo findCourse($db, $data['course_id']) ?>
+                            </td>
+                            <td>
+                                <?php echo $data['section'] ?>
+                            </td>
 
                             <td>
 
@@ -192,11 +202,14 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Type</th>
                             <th>Faculty</th>
                             <th>Faculty Email</th>
                             <th>Grader Name</th>
                             <th>Email</th>
                             <th>CPGA</th>
+                            <th>Course</th>
+                            <th>Section</th>
 
 
                         </tr>
@@ -204,6 +217,10 @@
                     <tbody>
 
                         <?php
+                              function findCourse($db, $id){
+                                    $course = fetch_all_data_usingDB($db, "SELECT * FROM course_list WHERE id = '$id'");
+                                    return $course['name'];
+                                }
                             
                             $id = $_SESSION['user_id'];
                             
@@ -216,6 +233,7 @@
                         ?>
                         <tr>
                             <td><?php echo $key+1; ?></td>
+                            <td><?php echo $data['type'] ?></td>
                             <td><?php
                                     $faculty = STUDENT($db, $data['faculty_id']);  
                                     echo $faculty['name'];
@@ -237,7 +255,12 @@
                                   echo  $student['cgpa'];
                                 ?></td>
 
-
+                            <td>
+                                <?php echo findCourse($db, $data['course_id']) ?>
+                            </td>
+                            <td>
+                                <?php echo $data['section'] ?>
+                            </td>
 
 
 

@@ -40,7 +40,7 @@
             $t_student = countData($db,"select count(*) from user where user_type = 'STUDENT'");
             $t_jobs = countData($db,"select count(*) from job_portal");
             $t_ua_grader = countData($db,"select count(*) from ua_grader_application where status =2");
-
+           
            
         ?>
 
@@ -155,6 +155,8 @@
 
                 </div><!-- card -->
             </div>
+
+
 
         </div>
     </div>

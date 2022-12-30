@@ -48,6 +48,38 @@
 
 	}
 
+	if(isset($_POST['btn_ProjectShowCaseFormSubmit'])){
+		$title = $_POST['title'];
+		$course_name = $_POST['course_name'];
+		$section = $_POST['section'];
+		
+		$t1_name = $_POST['t1_name'];
+		$t1_email = $_POST['t1_email'];
+
+		$t2_name = $_POST['t2_name'];
+		$t2_email = $_POST['t2_email'];
+
+		$t3_name = $_POST['t3_name'];
+		$t3_email = $_POST['t3_email'];
+		
+		$t4_name = $_POST['t4_name'];
+		$t4_email = $_POST['t4_email'];
+
+		$t5_name = $_POST['t5_name'] ?? '';
+		$t5_email = $_POST['t5_email'] ?? '';
+
+		$sql = "INSERT INTO project_show (title,course_name,  section, t1_name, t1_email, t2_name, t2_email, t3_name, t3_email, t4_name, t4_email, t5_name, t5_email) VALUES ('$title','$course_name', '$section', '$t1_name', '$t1_email', '$t2_name', '$t2_email', '$t3_name', '$t3_email', '$t4_name', '$t4_email', '$t5_name', '$t5_email')";
+		
+		if ($db->query($sql) === TRUE) {
+		  header('Location: project_show_form.php?msg=success');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+		
+	}
+
+
 	//project Proposal form submit
 	if(isset($_POST['btn_ProjectProposalFormSubmit'])){
 		$user_id = $_POST['user_id'];
@@ -58,6 +90,13 @@
 		$team = $_POST['team'];
 		$position = $_POST['position'];
 		$trimester = $_POST['trimester'];
+
+
+		$exist  = fetch_all_data_usingPDO($pdo, "select * from project_proposal where user_id='$user_id' and course_id='$course_id'");
+		if(count($exist) > 0){
+			header('Location: project_proposal_form.php?exist=on');
+			die();
+		}
 
 		$sql = "INSERT INTO project_proposal (title,user_id, course_id,supervisor, details,team, position,trimester) VALUES ('$title','$user_id', '$course_id', '$supervisor', '$details', '$team', '$position', '$trimester')";
 
@@ -83,6 +122,12 @@
 		$user_id = $_POST['user_id'];
 		$faculty_id = $_POST['faculty_id'];
 
+
+		$exist = fetch_all_data_usingPDO($pdo, "select * from ua_grader_application where user_id='$user_id' and section='$section' and faculty_id='$faculty_id' and course_id='$course_id' and type='$type'");
+		if(count($exist) > 0){
+			header('Location: ua_grader_form.php?exist=on');
+			die();
+		}
 
 		$sql = "INSERT INTO ua_grader_application (name,user_id, course_id, course_grade, phone, section, type,faculty_id) VALUES ('$name','$user_id', '$course_id', '$course_grade', '$phone', '$section', '$type', '$faculty_id')";
 
@@ -165,20 +210,97 @@
 		$name = $_POST['name'];
 		$contact = $_POST['contact'];
 		$password = $_POST['password'];
+		$cgpa = $_POST['cgpa'];
 
 
 
-		$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password' WHERE id='$user_id'";
+		
+
+		if(isset($_FILES['upload']['name']))
+		{
+			$files = array_filter($_FILES['upload']['name']); //Use something similar before processing files.
+			// Count the number of uploaded files in array
+			$total_count = count($_FILES['upload']['name']);
+			
+			// Loop through every file
+			for( $i=0 ; $i < $total_count ; $i++ ) {
+			   //The temp file path is obtained
+			   $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+			   //A file path needs to be present
+			   if ($tmpFilePath != ""){
+			      //Setup our new file path
+			      $newFilePath = "../images/" .'User_'. $_FILES['upload']['name'][$i];
+			      //File is uploaded to temp dir
+			      if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+			     		$sql1 = "UPDATE `user` SET image = '$newFilePath' WHERE id='$user_id'";
+						$db->query($sql1);
+
+			      }
+			   }
+			}
+		}
+
+		
+	
+		$sql = "UPDATE `user` SET name = '$name' , contact = '$contact',password = '$password', cgpa='$cgpa' WHERE id='$user_id'";
 
 		$db->query($sql);
 
+
+
+		
 		header("Location: profile.php?update=on");
 
 
 	}
 
 	//upload answer 
-	if(isset($_POST['btn_answer_upload']))
+	if(isset($_POST['btn_answer_upload'])){
+
+
+		$question_id = $_POST['question_id'];
+		$user_id = $_POST['user_id'];
+		
+			if (isset($_FILES["fileToUpload"]["name"])) {
+			
+			$target_dir = "../qa/";
+			$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+			$uploadOk = 1;
+			$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+
+			// Allow certain file formats
+			if($imageFileType != "pdf") {
+			  
+			  $uploadOk = 0;
+			  header("Location: qa_view_answer.php?error=fileerror");
+			}
+
+			// Check if $uploadOk is set to 0 by an error
+			if ($uploadOk == 0) {
+			  echo "Sorry, your file was not uploaded.";
+			// if everything is ok, try to upload file
+			} else {
+				move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+			  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+			    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+			  } else {
+			    echo "Sorry, there was an error uploading your file.";
+			  }
+			}
+
+
+		}
+
+		$sql = "INSERT INTO answers (user_id, question_id, url) VALUES ('$user_id', '$question_id', '$target_file')";
+
+		if ($db->query($sql) === TRUE) {
+		  header('Location: qa_view_answer.php?id='.$question_id.'&msg=success');
+		 
+		} else {
+		  echo "Error: " . $sql . "<br>" . $db->error;
+		}
+	}
 	
 
 ?>
