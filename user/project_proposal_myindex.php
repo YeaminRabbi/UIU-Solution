@@ -24,7 +24,7 @@
 <!-- ########## START: MAIN PANEL ########## -->
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="index.php">Inventory</a>
+        <a class="breadcrumb-item" href="index.php">UIU Solution</a>
         <span class="breadcrumb-item active">Project Proposals List</span>
     </nav>
 
@@ -42,6 +42,7 @@
                             <th>SL</th>
                             <th>Project Name</th>
                             <th>Supervisor</th>
+                            <th>Course</th>
                             <th>Trimester</th>
                             <th>Action</th>
 
@@ -59,6 +60,7 @@
                             <td><?php echo $key+1; ?></td>
                             <td><?php echo $data['title']; ?></td>
                             <td><?php echo findUserName($db, $data['supervisor']); ?></td>
+                            <td><?php echo findCourseName($db, $data['course_id']); ?></td>
 
                             <td><?php echo $data['trimester']; ?></td>
 

@@ -49,6 +49,12 @@
  
           <div class="row mg-b-25">
 
+          <div class="col-md-12">
+                <div class="form-group">
+                  <label class="form-control-label">Project Link: </label>
+                    <input type="text" name="link" class="form-control" value="<?= $DATA['link'] ?? '' ?>" disabled>
+                </div>
+              </div>
             <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-control-label">Project Title: </label>
@@ -124,7 +130,7 @@
 
             <div class="form-layout-footer">
               <a href="project_proposal_list.php" class="btn btn-dark mg-r-5 ">Back</a>
-              
+              <a href="PDF.php?file=<?= $DATA['url'] ?>" class="btn btn-warning" target="_blank">Download Document</a>
             </div><!-- form-layout-footer -->
           </div><!-- form-layout -->
 

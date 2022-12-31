@@ -114,6 +114,7 @@
 		$team = $_POST['team'];
 		$position = $_POST['position'];
 		$trimester = $_POST['trimester'];
+		$link = $_POST['link'];
 
 
 		$exist  = fetch_all_data_usingPDO($pdo, "select * from project_proposal where user_id='$user_id' and course_id='$course_id'");
@@ -122,7 +123,30 @@
 			die();
 		}
 
-		$sql = "INSERT INTO project_proposal (title,user_id, course_id,supervisor, details,team, position,trimester) VALUES ('$title','$user_id', '$course_id', '$supervisor', '$details', '$team', '$position', '$trimester')";
+		if(isset($_FILES['upload']['name']))
+		{
+			$files = array_filter($_FILES['upload']['name']); //Use something similar before processing files.
+			// Count the number of uploaded files in array
+			$total_count = count($_FILES['upload']['name']);
+			
+			// Loop through every file
+			for( $i=0 ; $i < $total_count ; $i++ ) {
+			   //The temp file path is obtained
+			   $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+			   //A file path needs to be present
+			   if ($tmpFilePath != ""){
+			      //Setup our new file path
+			      $newFilePath = "../file/" .'projectProposal_'. $_FILES['upload']['name'][$i];
+			      //File is uploaded to temp dir
+			      if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+			     		echo 'all good';
+
+			      }
+			   }
+			}
+		}
+
+		$sql = "INSERT INTO project_proposal (title,user_id, course_id,supervisor, details,team, position,trimester,url,link) VALUES ('$title','$user_id', '$course_id', '$supervisor', '$details', '$team', '$position', '$trimester','$newFilePath','$link')";
 
 		if ($db->query($sql) === TRUE) {
 		  header('Location: project_proposal_form.php?msg=success');

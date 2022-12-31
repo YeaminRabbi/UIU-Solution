@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 05:28 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Generation Time: Dec 31, 2022 at 09:11 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `admin` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -56,7 +56,7 @@ CREATE TABLE `answers` (
   `status` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `answers`
@@ -79,7 +79,7 @@ CREATE TABLE `comment` (
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `post_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `comment`
@@ -102,7 +102,7 @@ CREATE TABLE `course_list` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `course_list`
@@ -129,7 +129,7 @@ CREATE TABLE `division` (
   `id` int(11) NOT NULL,
   `division_name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `division`
@@ -154,7 +154,7 @@ CREATE TABLE `faculty_issues` (
   `reply` text DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `faculty_issues`
@@ -175,7 +175,7 @@ INSERT INTO `faculty_issues` (`id`, `issue`, `reply`, `status`, `user_id`) VALUE
 CREATE TABLE `grader_section` (
   `id` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `grader_section`
@@ -199,7 +199,7 @@ CREATE TABLE `job_portal` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `company` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `job_portal`
@@ -221,7 +221,7 @@ CREATE TABLE `notice` (
   `title` varchar(255) NOT NULL,
   `details` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `notice`
@@ -243,7 +243,7 @@ CREATE TABLE `post` (
   `details` text NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `post`
@@ -262,6 +262,8 @@ INSERT INTO `post` (`id`, `title`, `url`, `details`, `user_id`, `created_at`) VA
 CREATE TABLE `project_proposal` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
+  `url` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `team` text NOT NULL,
   `supervisor` text NOT NULL,
@@ -271,16 +273,14 @@ CREATE TABLE `project_proposal` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `trimester` varchar(255) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `project_proposal`
 --
 
-INSERT INTO `project_proposal` (`id`, `title`, `user_id`, `team`, `supervisor`, `position`, `course_id`, `details`, `created_at`, `trimester`, `status`) VALUES
-(3, 'sadfdsaf', 7, 'asdf', '3', 'asdf', 3, 'asdfasdf', '2022-12-30 17:16:16', 'asdf', 1),
-(4, 'sadfdsaf', 1, 'asdf', '3', 'asdf', 3, 'asdfasdf', '2022-12-30 17:16:16', 'asdf', 1),
-(5, 'asdfsdf', 7, 'asdf', '3', 'asdf', 4, 'asdfasdf', '2022-12-30 18:37:45', 'asdfasdf', 0);
+INSERT INTO `project_proposal` (`id`, `title`, `url`, `link`, `user_id`, `team`, `supervisor`, `position`, `course_id`, `details`, `created_at`, `trimester`, `status`) VALUES
+(6, 'PP 1', '../file/projectProposal_Notice_Expert-QA.pdf', 'https://mail.google.com/mail/u/0/#inbox', 7, 'dfbsdf', '5', 'sfgs', 1, 'sdfbsd', '2022-12-31 19:24:13', 'fbadfb', 1);
 
 -- --------------------------------------------------------
 
@@ -304,7 +304,7 @@ CREATE TABLE `project_show` (
   `t5_email` varchar(255) DEFAULT NULL,
   `t5_name` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `project_show`
@@ -331,7 +331,7 @@ CREATE TABLE `question_answer_solutions` (
   `course_name` varchar(255) NOT NULL,
   `trimester` varchar(255) NOT NULL,
   `mid_final` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `question_answer_solutions`
@@ -355,7 +355,7 @@ CREATE TABLE `requisition_order_list` (
   `details` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `requisition_order_list`
@@ -377,7 +377,7 @@ CREATE TABLE `schools` (
   `id` int(11) NOT NULL,
   `school_name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `schools`
@@ -402,7 +402,7 @@ INSERT INTO `schools` (`id`, `school_name`, `created_at`) VALUES
 CREATE TABLE `section_list` (
   `id` int(11) NOT NULL,
   `url` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `section_list`
@@ -429,7 +429,7 @@ CREATE TABLE `ua_grader_application` (
   `section` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ua_grader_application`
@@ -463,7 +463,7 @@ CREATE TABLE `user` (
   `designation` varchar(255) DEFAULT NULL,
   `subscription` int(11) NOT NULL DEFAULT 0,
   `created_id` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
@@ -658,7 +658,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `project_proposal`
 --
 ALTER TABLE `project_proposal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `project_show`

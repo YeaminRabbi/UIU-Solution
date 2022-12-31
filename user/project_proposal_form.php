@@ -64,12 +64,29 @@
 
                     <div class="row mg-b-25">
 
+                    <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Document: </label>
+                                <input type="file" name="upload[]" multiple="on" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Project Link: </label>
+                                <input type="url" name="link" class="form-control" required>
+                            </div>
+                        </div>
+
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label">Project Title: </label>
                                 <input type="text" name="title" class="form-control" required>
                             </div>
                         </div>
+
+
 
                         <div class="col-md-6">
                             <div class="form-group">
