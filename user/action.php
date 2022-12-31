@@ -37,8 +37,32 @@
 		$user_id = $_POST['user_id'];
 		$title = $_POST['title'];
 		$details = $_POST['details'];
-		$sql = "INSERT INTO post (title,user_id,  details) VALUES ('$title','$user_id', '$details')";
-
+		
+		
+		if(isset($_FILES['upload']['name']))
+		{
+			$files = array_filter($_FILES['upload']['name']); //Use something similar before processing files.
+			// Count the number of uploaded files in array
+			$total_count = count($_FILES['upload']['name']);
+			
+			// Loop through every file
+			for( $i=0 ; $i < $total_count ; $i++ ) {
+				//The temp file path is obtained
+				$tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+				//A file path needs to be present
+				if ($tmpFilePath != ""){
+					//Setup our new file path
+					$newFilePath = "../images/" .'Community_'. $_FILES['upload']['name'][$i];
+					//File is uploaded to temp dir
+					if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+						
+						echo 'All good';
+					}
+				}
+			}
+		}
+		
+		$sql = "INSERT INTO post (title,user_id,  details,url) VALUES ('$title','$user_id', '$details', '$newFilePath')";
 		if ($db->query($sql) === TRUE) {
 		  header('Location: community_post_form.php?msg=success');
 		 

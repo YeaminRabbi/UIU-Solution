@@ -41,18 +41,23 @@
                 <div class="form-layout">
 
                     <div class="row mg-b-25">
-
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">File/Document: </label>
+                                <input type="file" name="upload[]" multiple="on" class="form-control">
+                            </div>
+                        </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Title: </label>
-                                <input type="text" name="title" class="form-control">
+                                <input type="text" name="title" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Details: </label>
-                                <textarea name="details" class="form-control" cols="30" rows="10"></textarea>
+                                <textarea name="details" class="form-control" cols="30" rows="10" required></textarea>
                             </div>
                         </div>
 
@@ -110,6 +115,7 @@
                             <td><?php echo date('d M, Y', strtotime($data['created_at'])); ?></td>
 
                             <td>
+                                <a href="PDF.php?file=<?= $data['url'] ?>" class="btn btn-warning">Download</a>
                                 <a href="action.php?notice_delete_id=<?= $data['id'] ?>"
                                     class="btn btn-danger">Remove</a>
                             </td>

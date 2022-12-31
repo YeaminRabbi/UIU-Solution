@@ -54,6 +54,7 @@
                             <td><?php echo date('d M, Y', strtotime($data['created_at'])); ?></td>
 
                             <td>
+                                <a href="PDF.php?file=<?= $data['url'] ?>" class="btn btn-warning">Download</a>
                                 <a href="notice_view.php?notice_view_id=<?= $data['id'] ?>"
                                     class="btn btn-success">View</a>
                             </td>

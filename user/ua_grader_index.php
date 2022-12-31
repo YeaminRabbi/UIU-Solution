@@ -19,92 +19,97 @@
 <?php require 'd_headpanel.php' ?>
 <!-- ########## END: HEAD PANEL ########## -->
 
-    
 
-  <!-- ########## START: MAIN PANEL ########## -->
-  <div class="sl-mainpanel">
+
+<!-- ########## START: MAIN PANEL ########## -->
+<div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-      <a class="breadcrumb-item" href="index.php">Inventory</a>
-      <span class="breadcrumb-item active">UA & Grading List</span>
+        <a class="breadcrumb-item" href="index.php">Inventory</a>
+        <span class="breadcrumb-item active">UA & Grading List</span>
     </nav>
 
-    <div class="sl-pagebody"><!-- MAIN CONTENT -->
-      <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">UA & Grading Details</h6>
-          
-          
-         
-          <div class="table-wrapper">
-            <table id="myTable" class="table display responsive nowrap">
-              <thead>
-                <tr>
-                  <th >SL</th>
-                  <th >Type</th>
-                  <th >Applied Date</th>
-                  <th >Status</th>
-                  <th >Action</th>
-                  
-                </tr>
-              </thead>
-              <tbody>
-                
-                <?php
+    <div class="sl-pagebody">
+        <!-- MAIN CONTENT -->
+        <div class="card pd-20 pd-sm-40">
+            <h6 class="card-body-title">UA & Grading Details</h6>
+
+
+
+            <div class="table-wrapper">
+                <table id="myTable" class="table display responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Type</th>
+                            <th>Applied Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <?php
 
                     foreach ($list as $key => $data) {
                 ?>
-                  
-                    <tr>
-                      
-                      <td><?php echo $key+1; ?></td>
-                      <td><?php echo $data['type']; ?></td>
-                      <td><?php echo $data['created_at']; ?></td>
-                      <td><?php 
+
+                        <tr>
+
+                            <td><?php echo $key+1; ?></td>
+                            <td><?php echo $data['type']; ?></td>
+                            <td><?php echo $data['created_at']; ?></td>
+                            <td><?php 
                             if($data['status'] == 0){
                                 echo 'Pending';
                             }
-                            else{
+                            elseif($data['status'] == 0){
                                 echo 'Processing';
+                            }else{
+                              echo 'Approved';
                             }
                       ?></td>
-                      
-                      <td>
-                         <a href="ua_grader_view.php?id=<?= $data['id'] ?>" class="btn btn-primary">View</a>
-                      </td>
-                      
-                    </tr>
-                    
-                <?php
+
+                            <td>
+                                <a href="ua_grader_view.php?id=<?= $data['id'] ?>" class="btn btn-primary">View</a>
+                            </td>
+
+                        </tr>
+
+                        <?php
                     }
 
                 ?>
-               
-                
-               
-              </tbody>
-
-            </table>
-
-            
-          </div><!-- table-wrapper -->
-        </div>    
-
-      
-    </div><!-- sl-pagebody --><!-- END MAIN CONTENT -->
 
 
-  <?php require 'd_footer.php' ?>
-  </div><!-- sl-mainpanel -->
-  <!-- ########## END: MAIN PANEL ########## -->
 
-  <?php require 'd_javascript.php' ?>
+                    </tbody>
+
+                </table>
 
 
-   <script>
-    $('#myTable').DataTable({
+            </div><!-- table-wrapper -->
+        </div>
+
+
+    </div><!-- sl-pagebody -->
+    <!-- END MAIN CONTENT -->
+
+
+    <?php require 'd_footer.php' ?>
+</div><!-- sl-mainpanel -->
+<!-- ########## END: MAIN PANEL ########## -->
+
+<?php require 'd_javascript.php' ?>
+
+
+<script>
+$('#myTable').DataTable({
     bLengthChange: true,
     searching: true,
     responsive: true
-  });
-  </script>
-  </body>
+});
+</script>
+</body>
+
 </html>

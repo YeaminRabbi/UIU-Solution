@@ -54,14 +54,19 @@
         ?>
 
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">POST Form</h6>
-            <p class="mg-b-20 mg-sm-b-30">A form for POST</p>
+            <h6 class="card-body-title">POST Details</h6>
             <div class="form-layout">
 
 
                 <div class="row mg-b-25">
 
 
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                            <img src="<?= $post['url'] ?>" alt="" class="image-fluid">
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="form-control-label">Posted By: </label>

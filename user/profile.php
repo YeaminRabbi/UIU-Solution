@@ -23,7 +23,7 @@
 <!-- ########## START: MAIN PANEL ########## -->
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item">Inventory</a>
+        <a class="breadcrumb-item">UIU Solution</a>
         <span class="breadcrumb-item active">Update Profile</span>
     </nav>
 

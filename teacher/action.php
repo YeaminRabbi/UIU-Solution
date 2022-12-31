@@ -77,6 +77,32 @@ if(isset($_POST['btn-ProfileUpdate']))
 
 	$db->query($sql);
 
+
+	
+		if(isset($_FILES['upload']['name']))
+		{
+			$files = array_filter($_FILES['upload']['name']); //Use something similar before processing files.
+			// Count the number of uploaded files in array
+			$total_count = count($_FILES['upload']['name']);
+			
+			// Loop through every file
+			for( $i=0 ; $i < $total_count ; $i++ ) {
+			   //The temp file path is obtained
+			   $tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+			   //A file path needs to be present
+			   if ($tmpFilePath != ""){
+			      //Setup our new file path
+			      $newFilePath = "../images/" .'User_'. $_FILES['upload']['name'][$i];
+			      //File is uploaded to temp dir
+			      if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+			     		$sql1 = "UPDATE `user` SET image = '$newFilePath' WHERE id='$user_id'";
+						$db->query($sql1);
+
+			      }
+			   }
+			}
+		}
+
 	header("Location: profile.php?update=on");
 
 

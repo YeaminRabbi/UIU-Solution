@@ -232,8 +232,21 @@
                 <div class="card pd-20 pd-sm-40">
                     <div class="row">
                         <div class="col-md-4">
+                            <?php 
+
+                            if($user['image'] == ''){ 
+                                
+                            ?>
                             <img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
                                 alt="user image" style="max-width:100%;">
+                            <?php
+                            }
+                            else{
+                            ?>
+                            <img src="<?= $user['image'] ?>" alt="user image" style="max-width:100%;">
+                            <?php
+                            }
+                            ?>
                         </div>
                         <div class="col-md-8" style="color:black;">
                             <h4>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;: <?php echo $user['name']; ?>
@@ -246,7 +259,7 @@
                             <h4>User &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                                 <?php echo $user['user_type']; ?>
                             </h4>
-                          
+
                         </div>
                     </div>
                 </div>

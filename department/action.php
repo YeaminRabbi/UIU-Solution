@@ -118,14 +118,40 @@
 		$title = $_POST['title'];
 		$details = $_POST['details'];
 		
-		$sql = "INSERT INTO notice (title,details) VALUES ('$title','$details')";
-
+		
+		if(isset($_FILES['upload']['name']))
+		{
+			$files = array_filter($_FILES['upload']['name']); //Use something similar before processing files.
+			// Count the number of uploaded files in array
+			$total_count = count($_FILES['upload']['name']);
+			
+			// Loop through every file
+			for( $i=0 ; $i < $total_count ; $i++ ) {
+				//The temp file path is obtained
+				$tmpFilePath = $_FILES['upload']['tmp_name'][$i];
+				//A file path needs to be present
+				if ($tmpFilePath != ""){
+					//Setup our new file path
+					$newFilePath = "../file/" .'Notice_'. $_FILES['upload']['name'][$i];
+					//File is uploaded to temp dir
+					if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+						
+						echo 'All good';
+					}
+				}
+			}
+		}
+		$sql = "INSERT INTO notice (title,details,url) VALUES ('$title','$details','$newFilePath')";
+		
+		
 		if ($db->query($sql) === TRUE) {
 		  header('Location: notice_board.php?msg=success');
 		 
 		} else {
 		  echo "Error: " . $sql . "<br>" . $db->error;
 		}
+
+		
 		
 		
 	}
